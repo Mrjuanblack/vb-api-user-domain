@@ -1,5 +1,4 @@
 // Tipos para el flujo de actualización de teléfono
-import { phoneVerificationUpdate } from '@/drizzle/schema';
 
 // START - Iniciar actualización
 export interface PhoneUpdateStartRequest {
@@ -29,12 +28,11 @@ export interface PhoneUpdateVerifyResponse {
   message: string;
 }
 
-// CONFIRM - Confirmar actualización
+// CONFIRM - Confirmar cambio
 export interface PhoneUpdateConfirmRequest {
   userId: number;
 }
 
-// Respuesta exitosa al confirmar la actualización
 export interface PhoneUpdateConfirmResponse {
   message: string;
   user: {
@@ -47,11 +45,29 @@ export interface PhoneUpdateConfirmResponse {
   };
 }
 
-// ERROR - Respuestas de error
+// Error responses
 export interface PhoneUpdateError {
   error: string;
 }
 
-// TIPOS INFERIDOS DE DRIZZLE
-export type PhoneVerificationUpdateSelect = typeof phoneVerificationUpdate.$inferSelect;
-export type PhoneVerificationUpdateInsert = typeof phoneVerificationUpdate.$inferInsert;
+// Tipos para la tabla de verificación de teléfono
+export interface PhoneVerificationUpdateSelect {
+  id: number;
+  userId: number;
+  phoneNumber: string;
+  code: string;
+  verified: boolean;
+  validUntil: Date;
+  codesSentCount: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface PhoneVerificationUpdateInsert {
+  userId: number;
+  phoneNumber: string;
+  code: string;
+  verified?: boolean;
+  validUntil: Date;
+  codesSentCount?: number;
+}

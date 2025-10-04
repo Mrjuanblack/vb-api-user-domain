@@ -1,5 +1,4 @@
 // Tipos para el flujo de actualización de email
-import { emailVerificationUpdate } from '@/drizzle/schema';
 
 // =====================
 // START - Iniciar actualización
@@ -39,14 +38,30 @@ export interface EmailUpdateVerifyResponse {
 }
 
 // =====================
-// ERROR RESPONSES
+// ERROR - Respuestas de error
 // =====================
 export interface EmailUpdateError {
   error: string;
 }
 
-// =====================
-// SCHEMA TYPES
-// =====================
-export type EmailVerificationUpdateSelect = typeof emailVerificationUpdate.$inferSelect;
-export type EmailVerificationUpdateInsert = typeof emailVerificationUpdate.$inferInsert;
+// Tipos para la tabla de verificación de email
+export interface EmailVerificationUpdateSelect {
+  id: number;
+  userId: number;
+  email: string;
+  code: string;
+  verified: boolean;
+  validUntil: Date;
+  codesSentCount: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface EmailVerificationUpdateInsert {
+  userId: number;
+  email: string;
+  code: string;
+  verified?: boolean;
+  validUntil: Date;
+  codesSentCount?: number;
+}

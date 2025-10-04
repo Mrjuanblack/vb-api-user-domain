@@ -1,16 +1,28 @@
 // Tipos para el endpoint create-user-attempt
-import { createUserAttempt } from '@/drizzle/schema';
 
-// Usar tipos inferidos de Drizzle - IP se obtiene automáticamente del servidor
-export type CreateUserAttemptRequest = Pick<typeof createUserAttempt.$inferInsert, 'phoneNumber' | 'password'>;
+// Request para crear intento de usuario - IP se obtiene automáticamente del servidor
+export interface CreateUserAttemptRequest {
+  phoneNumber: string;
+  password: string;
+}
 
 // Respuesta completa para GET (uso administrativo/debug)
-export type CreateUserAttemptGetResponse = typeof createUserAttempt.$inferSelect;
+export interface CreateUserAttemptGetResponse {
+  id: number;
+  phoneNumber: string;
+  password: string;
+  ip: string;
+  createdAt: Date;
+}
 
 // Respuesta sin password por seguridad, con status del SMS para POST
-export type CreateUserAttemptResponse = Omit<typeof createUserAttempt.$inferSelect, 'password'> & {
+export interface CreateUserAttemptResponse {
+  id: number;
+  phoneNumber: string;
+  ip: string;
+  createdAt: Date;
   smsStatus: string;
-};
+}
 
 export interface CreateUserAttemptError {
   error: string;

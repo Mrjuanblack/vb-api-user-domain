@@ -1,4 +1,16 @@
-import { type User } from '@/drizzle/schema';
+// Interfaz base para el usuario
+export interface User {
+  id: number;
+  phone: string;
+  name: string | null;
+  lastName: string | null;
+  email: string | null;
+  identityNumber: string | null;
+  identityTypeId: number | null;
+  role: number;
+  createdAt: Date | null;
+  updatedAt: Date | null;
+}
 
 /**
  * Interfaz para la solicitud de completar perfil

@@ -8,6 +8,9 @@ Recordar actualizar la versión del paquete
 
 Una vez hecho eso, subir al repositorio los cambios
 
+Para actualizar la version de api-user-domain
+npm version minor
+
 
 
 Una vez actualizado, para poder actualizar este paquete en los proyectos que lo consumen se corre este comando:
