@@ -11,7 +11,7 @@ Una vez hecho eso, subir al repositorio los cambios
 Para actualizar la version de api-user-domain
 npm version minor
 
-
+npm install api-user-domain@latest 
 
 Una vez actualizado, para poder actualizar este paquete en los proyectos que lo consumen se corre este comando:
 npm update api-user-domain
