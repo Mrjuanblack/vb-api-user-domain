@@ -15,3 +15,5 @@ npm install api-user-domain@latest
 
 Una vez actualizado, para poder actualizar este paquete en los proyectos que lo consumen se corre este comando:
 npm update api-user-domain
+npm install api-user-domain --force
+npm install api-user-domain@latest
