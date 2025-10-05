@@ -1,5 +1,5 @@
 export type { LogoutResponse, UserProfileResponse } from './auth-responses';
-export type { CreateUserAttemptError } from './create-user-attempt';
+export type { CreateUserAttemptRequest, CreateUserAttemptResponse, CreateUserAttemptGetResponse, CreateUserAttemptError } from './create-user-attempt';
 export type { EmailUpdateStartRequest, EmailUpdateStartResponse, EmailUpdateVerifyRequest, EmailUpdateVerifyResponse, EmailUpdateError } from './email-update';
 export type { SendEmailCodeRequest, SendEmailCodeResponse, VerifyEmailCodeRequest, VerifyEmailCodeResponse, EmailVerificationError } from './email-verification';
 export type { LoginRequest, LoginResponse, LoginError, RateLimitData } from './login';

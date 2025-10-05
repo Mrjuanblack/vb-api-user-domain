@@ -7,7 +7,7 @@ export interface User {
   email: string | null;
   identityNumber: string | null;
   identityTypeId: number | null;
-  role: number;
+  role: number | null;
   createdAt: Date | null;
   updatedAt: Date | null;
 }
@@ -48,7 +48,15 @@ export interface BulkUsersRequest {
  * Interfaz para la respuesta de obtener usuarios en bulk
  */
 export interface BulkUsersResponse {
-  users: Partial<User>[];
+  users: {
+    id: number;
+    phone: string;
+    name: string | null;
+    email: string | null;
+    role: number | null;
+    createdAt: Date | null;
+    updatedAt: Date | null;
+  }[];
   notFound: number[];
   total: number;
 }

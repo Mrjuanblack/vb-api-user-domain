@@ -2,7 +2,12 @@
 export type { LogoutResponse, UserProfileResponse } from './auth-responses';
 
 // Create user attempt
-export type { CreateUserAttemptError } from './create-user-attempt';
+export type { 
+  CreateUserAttemptRequest,
+  CreateUserAttemptResponse,
+  CreateUserAttemptGetResponse,
+  CreateUserAttemptError 
+} from './create-user-attempt';
 
 // Email update
 export type { 
