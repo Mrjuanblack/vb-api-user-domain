@@ -15,7 +15,7 @@ export interface LoginResponse {
     success: boolean;
     message: string;
     user: Omit<UserSummary, 'createdAt' | 'updatedAt'> & {
-        lastName?: string;
+        lastName?: string | null;
     };
 }
 /**

@@ -17,7 +17,7 @@ export interface LoginResponse {
   success: boolean; // Siempre true en respuestas exitosas
   message: string;  // Mensaje descriptivo del resultado
   user: Omit<UserSummary, 'createdAt' | 'updatedAt'> & {
-    lastName?: string;    // Apellido (opcional)
+    lastName?: string | null;    // Apellido (opcional, puede ser null)
   };
 }
 
