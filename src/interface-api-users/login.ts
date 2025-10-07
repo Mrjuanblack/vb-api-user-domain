@@ -1,3 +1,5 @@
+import { UserSummary } from './user-responses';
+
 /**
  * Datos requeridos para realizar el login
  * Se envía en el body de la request POST /api/login
@@ -14,13 +16,8 @@ export interface LoginRequest {
 export interface LoginResponse {
   success: boolean; // Siempre true en respuestas exitosas
   message: string;  // Mensaje descriptivo del resultado
-  user: {
-    id: number;           // ID único del usuario en la BD
-    phone: string;        // Teléfono del usuario autenticado
-    name?: string;        // Nombre (opcional)
+  user: Omit<UserSummary, 'createdAt' | 'updatedAt'> & {
     lastName?: string;    // Apellido (opcional)
-    email?: string;       // Email (opcional)
-    role: number;         // Rol del usuario (1 = usuario normal)
   };
 }
 

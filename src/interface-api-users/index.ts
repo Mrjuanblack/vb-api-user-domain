@@ -1,73 +1,12 @@
-// Auth responses
-export type { LogoutResponse, UserProfileResponse } from './auth-responses';
+export * from './auth-responses';
+export * from './create-user-attempt';
+export * from './email-update';
+export * from './email-verification';
+export * from './login';
+export * from './phone-update';
+export * from './phone-verification';
+export * from './sms-update';
+export * from './user-responses';
 
-// Create user attempt
-export type { 
-  CreateUserAttemptRequest,
-  CreateUserAttemptResponse,
-  CreateUserAttemptGetResponse,
-  CreateUserAttemptError 
-} from './create-user-attempt';
-
-// Email update
-export type { 
-  EmailUpdateStartRequest, 
-  EmailUpdateStartResponse, 
-  EmailUpdateVerifyRequest, 
-  EmailUpdateVerifyResponse, 
-  EmailUpdateError 
-} from './email-update';
-
-// Email verification
-export type { 
-  SendEmailCodeRequest, 
-  SendEmailCodeResponse, 
-  VerifyEmailCodeRequest, 
-  VerifyEmailCodeResponse, 
-  EmailVerificationError 
-} from './email-verification';
-
-// Login
-export type { 
-  LoginRequest, 
-  LoginResponse, 
-  LoginError, 
-  RateLimitData 
-} from './login';
-
-// Phone update
-export type { 
-  PhoneUpdateStartRequest, 
-  PhoneUpdateStartResponse, 
-  PhoneUpdateVerifyRequest, 
-  PhoneUpdateVerifyResponse, 
-  PhoneUpdateConfirmRequest, 
-  PhoneUpdateConfirmResponse, 
-  PhoneUpdateError 
-} from './phone-update';
-
-// Phone verification
-export type { 
-  SendCodeRequest, 
-  SendCodeResponse, 
-  VerifyCodeRequest, 
-  VerifyCodeResponse, 
-  PhoneVerificationError 
-} from './phone-verification';
-
-// SMS update
-export type { 
-  SendSMSUpdateRequest, 
-  SendSMSUpdateResponse, 
-  SMSUpdateError 
-} from './sms-update';
-
-// User responses
-export type { 
-  CompleteProfileRequest, 
-  CompleteProfileResponse, 
-  BulkUsersRequest, 
-  BulkUsersResponse, 
-  UserByIdResponse, 
-  PaginatedUsersResponse 
-} from './user-responses';
+// Exportar tipos principales
+export { User, UserSummary } from './user-responses';

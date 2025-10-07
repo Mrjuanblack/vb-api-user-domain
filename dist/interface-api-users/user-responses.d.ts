@@ -10,15 +10,14 @@ export interface User {
     createdAt: Date | null;
     updatedAt: Date | null;
 }
+export interface UserSummary extends Omit<User, 'lastName' | 'identityNumber' | 'identityTypeId'> {
+}
 /**
- * Interfaz para la solicitud de completar perfil
+ * Interfaz para la solicitud de completar perfil - reutiliza tipos de User
  */
-export interface CompleteProfileRequest {
+export interface CompleteProfileRequest extends Pick<User, 'name' | 'email' | 'lastName' | 'identityNumber' | 'identityTypeId'> {
     name: string;
     email: string;
-    lastName?: string;
-    identityNumber?: string;
-    identityTypeId?: number;
 }
 /**
  * Interfaz para la respuesta de completar perfil
@@ -43,46 +42,20 @@ export interface BulkUsersRequest {
  * Interfaz para la respuesta de obtener usuarios en bulk
  */
 export interface BulkUsersResponse {
-    users: {
-        id: number;
-        phone: string;
-        name: string | null;
-        email: string | null;
-        role: number | null;
-        createdAt: Date | null;
-        updatedAt: Date | null;
-    }[];
+    users: UserSummary[];
     notFound: number[];
     total: number;
 }
 /**
- * Interfaz para la respuesta de obtener usuario por ID
+ * Interfaz para la respuesta de obtener usuario por ID - extiende User completo
  */
-export interface UserByIdResponse {
-    id: number;
-    phone: string;
-    name: string | null;
-    lastName: string | null;
-    email: string | null;
-    identityNumber: string | null;
-    identityTypeId: number | null;
-    role: number | null;
-    createdAt: Date | null;
-    updatedAt: Date | null;
+export interface UserByIdResponse extends User {
 }
 /**
  * Interfaz para la respuesta de usuarios paginados
  */
 export interface PaginatedUsersResponse {
-    users: {
-        id: string;
-        phone: string;
-        name: string | null;
-        email: string | null;
-        role: string;
-        createdAt: Date | null;
-        updatedAt: Date | null;
-    }[];
+    users: UserSummary[];
     pagination: {
         currentPage: number;
         limit: number;

@@ -1,4 +1,4 @@
-// Interfaz base para el usuario
+// Interfaz base para el usuario completo (API responses)
 export interface User {
   id: number;
   phone: string;
@@ -12,15 +12,16 @@ export interface User {
   updatedAt: Date | null;
 }
 
+// Versión reducida del usuario para listados - omite campos específicos de User
+export interface UserSummary extends Omit<User, 'lastName' | 'identityNumber' | 'identityTypeId'> {}
+
 /**
- * Interfaz para la solicitud de completar perfil
+ * Interfaz para la solicitud de completar perfil - reutiliza tipos de User
  */
-export interface CompleteProfileRequest {
+export interface CompleteProfileRequest extends Pick<User, 'name' | 'email' | 'lastName' | 'identityNumber' | 'identityTypeId'> {
+  // Sobrescribimos para hacer name y email requeridos
   name: string;
   email: string;
-  lastName?: string;
-  identityNumber?: string;
-  identityTypeId?: number;
 }
 
 /**
@@ -48,48 +49,21 @@ export interface BulkUsersRequest {
  * Interfaz para la respuesta de obtener usuarios en bulk
  */
 export interface BulkUsersResponse {
-  users: {
-    id: number;
-    phone: string;
-    name: string | null;
-    email: string | null;
-    role: number | null;
-    createdAt: Date | null;
-    updatedAt: Date | null;
-  }[];
+  users: UserSummary[];
   notFound: number[];
   total: number;
 }
 
 /**
- * Interfaz para la respuesta de obtener usuario por ID
+ * Interfaz para la respuesta de obtener usuario por ID - extiende User completo
  */
-export interface UserByIdResponse {
-  id: number;
-  phone: string;
-  name: string | null;
-  lastName: string | null;
-  email: string | null;
-  identityNumber: string | null;
-  identityTypeId: number | null;
-  role: number | null;
-  createdAt: Date | null;
-  updatedAt: Date | null;
-}
+export interface UserByIdResponse extends User {}
 
 /**
  * Interfaz para la respuesta de usuarios paginados
  */
 export interface PaginatedUsersResponse {
-  users: {
-    id: string;
-    phone: string;
-    name: string | null;
-    email: string | null;
-    role: string;
-    createdAt: Date | null;
-    updatedAt: Date | null;
-  }[];
+  users: UserSummary[];
   pagination: {
     currentPage: number;
     limit: number;
